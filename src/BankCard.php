@@ -34,16 +34,6 @@ class BankCard
     }
 
     /**
-     * Get the logo.
-     *
-     * @return string
-     */
-    public function logo()
-    {
-        return self::ALIPAY_GET_CARD_LOGO."?d=cashier&t={$this->cardNumber}";
-    }
-
-    /**
      * Get the bank card info.
      *
      * @return array
@@ -67,11 +57,23 @@ class BankCard
                 'card_type_name' => $this->getCardType($result['cardType']),
                 'card_type' => $result['cardType'],
                 'validated' => $result['validated'],
-                'logo' => $this->logo(),
+                'logo' => $this->logo($result['bank']),
             ];
         }
 
         throw new CardBinException($result['messages'][0]['errorCodes']);
+    }
+
+    /**
+     * Get the logo.
+     *
+     * @param string $shortCode
+     *
+     * @return string
+     */
+    public function logo($shortCode)
+    {
+        return self::ALIPAY_GET_CARD_LOGO."?d=cashier&t={$shortCode}";
     }
 
     /**
