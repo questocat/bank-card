@@ -20,3 +20,7 @@ $bankCard->info();   // output all info
 
 ## Reference
  - [支付宝合作银行](https://ab.alipay.com/i/yinhang.htm)
+
+## License
+
+Licensed under the [MIT license](https://github.com/emanci/bank-card/blob/master/LICENSE).
