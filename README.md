@@ -14,8 +14,19 @@ composer require emanci/bank-card
 
 ```php
 $bankCard = new BankCard('620043459807747768');
-$bankCard->logo();   // output logo
-$bankCard->info();   // output all info
+$bankCard->info();
+// output info
+[
+    'bank_name' => '福建海峡银行',     // 银行名称
+    'short_code' => 'FJHXBC',        // 银行简码
+    'card_type_name' => '储蓄卡',     // 银行卡类型
+    'card_type' => 'DC',             // 银行卡类型代码
+    'validated' => true,             // 卡 BIN 验证情况（true 验证通过，false 验证失败）
+    'logo' => 'https://apimg.alipay.com/combo.png?d=cashier&t=FJHXBC',   // 银行 Logo
+]
+
+// 根据指定的银行简码，获取银行 Logo
+$bankCard->logo('CCB');   // output logo
 ```
 
 ## Reference
