@@ -2,121 +2,256 @@
 
 namespace Emanci\BankCard;
 
-class BankCard
+class BankCard implements BankCardInterface
 {
     /**
-     * The card number.
+     * The bankCard's card number.
      *
      * @var string
      */
     protected $cardNumber;
 
     /**
-     * @var array
+     * The bankCard's card format text.
+     *
+     * @var string
      */
-    protected $cardType = [
-        'CC' => '信用卡',
-        'DC' => '储蓄卡',
-    ];
-
-    const ALIPAY_GET_CARD_INFO = 'https://ccdcapi.alipay.com/validateAndCacheCardInfo.json';
-
-    const ALIPAY_GET_CARD_LOGO = 'https://apimg.alipay.com/combo.png';
+    protected $cardFormat;
 
     /**
-     * BankCard construct.
+     * The bankCard's bank name.
      *
-     * @param string $cardNumber
+     * @var string
      */
-    public function __construct($cardNumber)
+    protected $bankName;
+
+    /**
+     * The bankCard's short code.
+     *
+     * @var string
+     */
+    protected $shortCode;
+
+    /**
+     * The bankCard's card BIN.
+     *
+     * @var string
+     */
+    protected $cardBin;
+
+    /**
+     * The bankCard's logo.
+     *
+     * @var string
+     */
+    protected $logo;
+
+    /**
+     * The bankCard's small logo.
+     *
+     * @var string
+     */
+    protected $smallLogo;
+
+    /**
+     * The bankCard's base64 logo.
+     *
+     * @var string
+     */
+    protected $base64Logo;
+
+    /**
+     * The bankCard's card type.
+     *
+     * @var string
+     */
+    protected $cardType;
+
+    /**
+     * The bankCard's card type name.
+     *
+     * @var string
+     */
+    protected $cardTypeName;
+
+    /**
+     * The bankCard's card BIN verify.
+     *
+     * @var string
+     */
+    protected $validated;
+
+    /**
+     * The bankCard's luhn verify.
+     *
+     * @var string
+     */
+    protected $luhn;
+
+    /**
+     * The bankCard's original data.
+     *
+     * @var string
+     */
+    protected $original;
+
+    /**
+     * Get the card number of the bankCard.
+     *
+     * @return string
+     */
+    public function getCardNumber()
     {
-        $this->cardNumber = $cardNumber;
+        return $this->cardNumber;
     }
 
     /**
-     * Get the bank card info.
+     * Get the card format text of the bankCard.
      *
-     * @return array
+     * @return string
      */
-    public function info()
+    public function getCardFormat()
     {
-        $query = [
-            'cardNo' => $this->cardNumber,
-            '_input_charset' => 'utf-8',
-            'cardBinCheck' => 'true',
-        ];
+        return $this->cardFormat;
+    }
 
-        $url = self::ALIPAY_GET_CARD_INFO.'?'.http_build_query($query);
-        $contents = file_get_contents($url);
-        $result = json_decode($contents, true);
+    /**
+     * Get the bank name of the bankCard.
+     *
+     * @return string
+     */
+    public function getBankName()
+    {
+        return $this->bankName;
+    }
 
-        if ($result['validated']) {
-            return [
-                'bank_name' => $this->getBankName($result['bank']),
-                'short_code' => $result['bank'],
-                'card_type_name' => $this->getCardType($result['cardType']),
-                'card_type' => $result['cardType'],
-                'validated' => $result['validated'],
-                'logo' => $this->logo($result['bank']),
-            ];
+    /**
+     * Get the short code of the bankCard.
+     *
+     * @return string
+     */
+    public function getShortCode()
+    {
+        return $this->shortCode;
+    }
+
+    /**
+     * Get the card bin of the bankCard.
+     *
+     * @return string
+     */
+    public function getCardBin()
+    {
+        return $this->cardBin;
+    }
+
+    /**
+     * Get the logo of the bankCard.
+     *
+     * @return string
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * Get the small logo of the bankCard.
+     *
+     * @return string
+     */
+    public function getSmallLogo()
+    {
+        return $this->smallLogo;
+    }
+
+    /**
+     * Get the base64 logo of the bankCard.
+     *
+     * @return string
+     */
+    public function getBase64Logo()
+    {
+        return $this->base64Logo;
+    }
+
+    /**
+     * Get the card type of the bankCard.
+     *
+     * @return string
+     */
+    public function getCardType()
+    {
+        return $this->cardType;
+    }
+
+    /**
+     * Get the card type name of the bankCard.
+     *
+     * @return string
+     */
+    public function getCardTypeName()
+    {
+        return $this->cardTypeName;
+    }
+
+    /**
+     * Get the validated of the bankCard.
+     *
+     * @return string
+     */
+    public function getValidated()
+    {
+        return $this->validated;
+    }
+
+    /**
+     * Get the luhn of the bankCard.
+     *
+     * @return string
+     */
+    public function getLuhn()
+    {
+        return $this->luhn;
+    }
+
+    /**
+     * Get the original of the bankCard.
+     *
+     * @return string
+     */
+    public function getRaw()
+    {
+        return $this->original;
+    }
+
+    /**
+     * Set the raw original array.
+     *
+     * @param array $original
+     *
+     * @return $this
+     */
+    public function setRaw(array $original)
+    {
+        $this->original = $original;
+
+        return $this;
+    }
+
+    /**
+     * Map the given array onto the bankCard's properties.
+     *
+     * @param array $attributes
+     *
+     * @return $this
+     */
+    public function map(array $attributes)
+    {
+        foreach ($attributes as $key => $value) {
+            $this->{$key} = $value;
         }
 
-        throw new CardBinException($result['messages'][0]['errorCodes']);
-    }
-
-    /**
-     * Get the logo.
-     *
-     * @param string $shortCode
-     *
-     * @return string
-     */
-    public function logo($shortCode)
-    {
-        return self::ALIPAY_GET_CARD_LOGO."?d=cashier&t={$shortCode}";
-    }
-
-    /**
-     * Get the bank name.
-     *
-     * @param string $shortCode
-     *
-     * @return string
-     */
-    protected function getBankName($shortCode)
-    {
-        $map = include dirname(__DIR__).'/resources/BankList.php';
-
-        return $this->getFromArray($map, $shortCode);
-    }
-
-    /**
-     * Get the card type.
-     *
-     * @param string $code
-     *
-     * @return string
-     */
-    protected function getCardType($code)
-    {
-        return $this->getFromArray($this->cardType, $code);
-    }
-
-    /**
-     * Get an item from an array.
-     *
-     * @param array  $array
-     * @param string $key
-     * @param mixed  $default
-     *
-     * @return mixed
-     */
-    protected function getFromArray($array, $key, $default = null)
-    {
-        if (array_key_exists($key, $array)) {
-            return $array[$key];
-        }
-
-        return $default;
+        return $this;
     }
 }

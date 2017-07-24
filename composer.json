@@ -18,7 +18,10 @@
     "autoload": {
         "psr-4": {
             "Emanci\\BankCard\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
