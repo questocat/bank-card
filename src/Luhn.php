@@ -66,7 +66,7 @@ class Luhn
      *
      * @return int
      */
-    public function checkDigit($cardNumber)
+    protected function checkDigit($cardNumber)
     {
         return substr($cardNumber, -1);
     }
@@ -78,7 +78,7 @@ class Luhn
      *
      * @return string
      */
-    public function excludeCheckDigit($cardNumber)
+    protected function excludeCheckDigit($cardNumber)
     {
         return substr($cardNumber, 0, -1);
     }
