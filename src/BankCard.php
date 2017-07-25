@@ -87,9 +87,9 @@ class BankCard
      */
     protected function getBankName($shortCode)
     {
-        $map = include dirname(__DIR__).'/resources/BankList.php';
+        $banks = include dirname(__DIR__).'/resources/Banks.php';
 
-        return $this->getFromArray($map, $shortCode);
+        return $this->getFromArray($banks, $shortCode);
     }
 
     /**
