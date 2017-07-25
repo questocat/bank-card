@@ -17,6 +17,8 @@ class BankCard
     protected $cardType = [
         'CC' => '信用卡',
         'DC' => '储蓄卡',
+        'SCC' => '准贷记卡',
+        'PC' => '预付费卡',
     ];
 
     const ALIPAY_GET_CARD_INFO = 'https://ccdcapi.alipay.com/validateAndCacheCardInfo.json';
