@@ -33,7 +33,21 @@ abstract class AbstractParser
      */
     public function __construct($cardNumber)
     {
+        $this->setCardNumber($cardNumber);
+    }
+
+    /**
+     * Set the bank card number.
+     *
+     * @param string $cardNumber
+     *
+     * @return $this
+     */
+    public function setCardNumber($cardNumber)
+    {
         $this->cardNumber = $cardNumber;
+
+        return $this;
     }
 
     /**
