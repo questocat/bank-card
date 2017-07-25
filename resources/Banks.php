@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
   'CDB' => '国家开发银行',
   'ICBC' => '中国工商银行',
   'ABC' => '中国农业银行',
@@ -166,4 +166,4 @@ return array(
   'LYBANK' => '洛阳银行',
   'NHQS' => '农信银清算中心',
   'CBBQS' => '城市商业银行资金清算中心',
-);
+];
