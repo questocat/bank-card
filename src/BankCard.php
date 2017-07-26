@@ -58,6 +58,8 @@ class BankCard
                 'short_code' => $result['bank'],
                 'card_type_name' => $this->getCardType($result['cardType']),
                 'card_type' => $result['cardType'],
+                'BIN' => substr($this->cardNumber, 0, 6),
+                'length' => strlen($this->cardNumber),
                 'validated' => $result['validated'],
                 'logo' => $this->logo($result['bank']),
             ];
