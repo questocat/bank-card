@@ -48,6 +48,7 @@ class DictFileParser extends AbstractParser
                 'smallLogo' => $this->getSmallLogo($original['code']),
                 'base64Logo' => $this->getBase64Logo($original['code']),
                 'cardNumber' => $this->cardNumber,
+                'length' => strlen($this->cardNumber),
                 'cardFormat' => card_format($this->cardNumber),
                 'cardBin' => $original['bin'],
                 'validated' => true,

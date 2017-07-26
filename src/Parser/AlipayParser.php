@@ -44,7 +44,9 @@ class AlipayParser extends AbstractParser
                 'smallLogo' => $this->getSmallLogo($original['bank']),
                 'base64Logo' => $this->getBase64Logo($original['bank']),
                 'cardNumber' => $this->cardNumber,
+                'length' => strlen($this->cardNumber),
                 'cardFormat' => card_format($this->cardNumber),
+                'cardBin' => card_bin($this->cardNumber),
                 'validated' => true,
                 'luhn' => $this->luhn()->verify($this->cardNumber),
             ];

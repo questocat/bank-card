@@ -75,6 +75,13 @@ class BankCard implements BankCardInterface
     protected $cardTypeName;
 
     /**
+     * The bankCard's card number length.
+     *
+     * @var int
+     */
+    protected $length;
+
+    /**
      * The bankCard's card BIN verify.
      *
      * @var string
@@ -193,6 +200,16 @@ class BankCard implements BankCardInterface
     public function getCardTypeName()
     {
         return $this->cardTypeName;
+    }
+
+    /**
+     * Get the card number length of the bankCard.
+     *
+     * @return string
+     */
+    public function getLength()
+    {
+        return $this->length;
     }
 
     /**

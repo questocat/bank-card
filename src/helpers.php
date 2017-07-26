@@ -48,3 +48,17 @@ if (!function_exists('card_format')) {
         return implode(' ', $match);
     }
 }
+
+if (!function_exists('card_bin')) {
+    /**
+     * Returns the card BIN of bank card number.
+     *
+     * @param string $cardNumber
+     *
+     * @return string
+     */
+    function card_bin($cardNumber)
+    {
+        return substr($cardNumber, 0, 6);
+    }
+}

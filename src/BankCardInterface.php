@@ -75,6 +75,13 @@ interface BankCardInterface
     public function getCardTypeName();
 
     /**
+     * Get the card number length of the bankCard.
+     *
+     * @return string
+     */
+    public function getLength();
+
+    /**
      * Get the validated of the bankCard.
      *
      * @return string
