@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of bank-card package.
+ *
+ * (c) emanci <zhengchaopu@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 return array(
   'CDB' => '国家开发银行',
   'ICBC' => '中国工商银行',

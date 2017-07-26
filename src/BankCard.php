@@ -1,9 +1,21 @@
 <?php
 
+/*
+ * This file is part of bank-card package.
+ *
+ * (c) emanci <zhengchaopu@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Emanci\BankCard;
 
 class BankCard
 {
+    const ALIPAY_GET_CARD_INFO = 'https://ccdcapi.alipay.com/validateAndCacheCardInfo.json';
+
+    const ALIPAY_GET_CARD_LOGO = 'https://apimg.alipay.com/combo.png';
     /**
      * The card number.
      *
@@ -20,10 +32,6 @@ class BankCard
         'SCC' => '准贷记卡',
         'PC' => '预付费卡',
     ];
-
-    const ALIPAY_GET_CARD_INFO = 'https://ccdcapi.alipay.com/validateAndCacheCardInfo.json';
-
-    const ALIPAY_GET_CARD_LOGO = 'https://apimg.alipay.com/combo.png';
 
     /**
      * BankCard construct.
