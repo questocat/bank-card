@@ -16,6 +16,7 @@ class BankCard
     const ALIPAY_GET_CARD_INFO = 'https://ccdcapi.alipay.com/validateAndCacheCardInfo.json';
 
     const ALIPAY_GET_CARD_LOGO = 'https://apimg.alipay.com/combo.png';
+
     /**
      * The card number.
      *
