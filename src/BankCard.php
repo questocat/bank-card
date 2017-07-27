@@ -61,20 +61,21 @@ class BankCard
         $contents = file_get_contents($url);
         $result = json_decode($contents, true);
 
-        if ($result['validated']) {
+        if (!$result['validated']) {
             return [
-                'bank_name' => $this->getBankName($result['bank']),
-                'short_code' => $result['bank'],
-                'card_type_name' => $this->getCardType($result['cardType']),
-                'card_type' => $result['cardType'],
-                'BIN' => substr($this->cardNumber, 0, 6),
-                'length' => strlen($this->cardNumber),
-                'validated' => $result['validated'],
-                'logo' => $this->logo($result['bank']),
+                'validated' => false,
             ];
         }
 
-        throw new CardBinException($result['messages'][0]['errorCodes']);
+        return [
+            'bank_name' => $this->getBankName($result['bank']),
+            'short_code' => $result['bank'],
+            'card_type_name' => $this->getCardType($result['cardType']),
+            'card_type' => $result['cardType'],
+            'logo' => $this->logo($result['bank']),
+            'length' => strlen($this->cardNumber),
+            'validated' => true,
+        ];
     }
 
     /**
