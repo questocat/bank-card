@@ -24,7 +24,6 @@ $bankCard->info();
     'short_code' => 'FJHXBC',        // 银行简码
     'card_type_name' => '储蓄卡',     // 银行卡类型
     'card_type' => 'DC',             // 银行卡类型代码
-    'BIN' => '620043',               // 卡 BIN
     'length' => 19,                  // 银行卡号位数
     'validated' => true,             // 卡 BIN 验证情况
     'logo' => 'https://apimg.alipay.com/combo.png?d=cashier&t=FJHXBC',   // 银行 Logo
