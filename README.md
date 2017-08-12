@@ -26,6 +26,7 @@ $bankCard->info();
     'card_type' => 'DC',             // 银行卡类型代码
     'length' => 19,                  // 银行卡号位数
     'validated' => true,             // 卡 BIN 验证情况
+    'luhn' => false,                 // Luhn 校验
     'logo' => 'https://apimg.alipay.com/combo.png?d=cashier&t=FJHXBC',   // 银行 Logo
 ]
 
@@ -35,6 +36,7 @@ $bankCard->logo('CCB');
 
 ## Reference
  - [支付宝合作银行](https://ab.alipay.com/i/yinhang.htm)
+ - [Luhn算法](https://zh.wikipedia.org/wiki/Luhn%E7%AE%97%E6%B3%95)
 
 ## License
 
