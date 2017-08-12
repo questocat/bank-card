@@ -13,6 +13,8 @@ namespace Emanci\BankCard;
 
 class BankCard
 {
+    use LuhnTrait;
+
     const ALIPAY_GET_CARD_INFO = 'https://ccdcapi.alipay.com/validateAndCacheCardInfo.json';
 
     const ALIPAY_GET_CARD_LOGO = 'https://apimg.alipay.com/combo.png';
@@ -74,6 +76,7 @@ class BankCard
             'card_type' => $result['cardType'],
             'logo' => $this->logo($result['bank']),
             'length' => strlen($this->cardNumber),
+            'luhn' => $this->luhn()->verify($this->cardNumber),
             'validated' => true,
         ];
     }
