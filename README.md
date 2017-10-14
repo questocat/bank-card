@@ -6,7 +6,7 @@ The bank card parser library
 
 Using [Composer](https://getcomposer.org) to add the package to your project's dependencies:
 
-```php
+```bash
 composer require emanci/bank-card
 ```
 
