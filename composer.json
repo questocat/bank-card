@@ -1,6 +1,6 @@
 {
     "name": "emanci/bank-card",
-    "description": "",
+    "description": "The bank card parser library",
     "keywords": ["bank-card", "bank card", "card"],
     "license": "MIT",
     "minimum-stability": "dev",
