@@ -2,6 +2,8 @@
 
 The bank card parser library
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/questocat/bank-card/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/questocat/bank-card/?branch=master)
+
 ## Installation
 
 Using [Composer](https://getcomposer.org) to add the package to your project's dependencies:
