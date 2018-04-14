@@ -9,15 +9,21 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Emanci\BankCard;
+namespace Questocat\BankCard;
 
 trait LuhnTrait
 {
+    /**
+     * @var Luhn
+     */
     protected $luhn;
 
+    /**
+     * @return Luhn
+     */
     public function luhn()
     {
-        if (is_null($this->luhn)) {
+        if (null === $this->luhn) {
             $this->luhn = new Luhn();
         }
 

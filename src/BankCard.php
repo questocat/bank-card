@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Emanci\BankCard;
+namespace Questocat\BankCard;
 
 class BankCard
 {

@@ -9,7 +9,7 @@
  * with this source code in the file LICENSE.
  */
 
-namespace Emanci\BankCard;
+namespace Questocat\BankCard;
 
 /**
  * Luhn 算法.
@@ -28,12 +28,14 @@ class Luhn
     public function verify($cardNumber)
     {
         $originalCardNumber = $this->prepare($cardNumber);
+
         $cardNumber = $this->excludeCheckDigit($originalCardNumber);
+
         $luhmSum = $this->calculateLuhmSum($cardNumber);
 
         $checkCode = $this->checkDigit($originalCardNumber);
 
-        if (($luhmSum + $checkCode) % 10 == 0) {
+        if (0 === ($luhmSum + $checkCode) % 10) {
             return true;
         }
 
