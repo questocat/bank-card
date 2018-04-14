@@ -1,11 +1,11 @@
 {
-    "name": "emanci/bank-card",
+    "name": "questocat/bank-card",
     "description": "The bank card parser library",
     "keywords": ["bank-card", "bank card", "card"],
     "license": "MIT",
     "minimum-stability": "dev",
     "authors": [{
-        "name": "emanci",
+        "name": "questocat",
         "email": "zhengchaopu@gmail.com"
     }],
     "require": {
@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Emanci\\BankCard\\": "src/"
+            "Questocat\\BankCard\\": "src/"
         }
     },
     "autoload-dev": {

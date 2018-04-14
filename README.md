@@ -7,7 +7,7 @@ The bank card parser library
 Using [Composer](https://getcomposer.org) to add the package to your project's dependencies:
 
 ```bash
-composer require emanci/bank-card
+composer require questocat/bank-card
 ```
 
 ## Usage
@@ -40,4 +40,4 @@ $bankCard->logo('CCB');
 
 ## License
 
-Licensed under the [MIT license](https://github.com/emanci/bank-card/blob/master/LICENSE).
+Licensed under the [MIT license](https://github.com/questocat/bank-card/blob/master/LICENSE).
